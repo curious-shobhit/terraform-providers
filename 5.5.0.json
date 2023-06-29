@@ -1,0 +1,10 @@
+{
+  "archives": {
+    "windows_386": {
+      "hashes": [
+        "h1:6vFdrxjsI8hS6XEeNG+wjibluoIZoI15bQylREGOVg4="
+      ],
+      "url": "terraform-provider-aws_5.5.0_windows_386.zip"
+    }
+  }
+}
