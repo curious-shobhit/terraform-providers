@@ -1,0 +1,20 @@
+# Dockerfile
+FROM amazonlinux:2
+
+RUN yum update -y \
+    && yum install -y openssh-server \
+    && sed -i 's/#Port 22/Port 8900/' /etc/ssh/sshd_config \
+    && sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config \
+    && echo "PermitUserEnvironment yes" >> /etc/ssh/sshd_config \
+    && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config \
+    && echo "UseDNS no" >> /etc/ssh/sshd_config
+
+EXPOSE 8900
+
+CMD ["/usr/sbin/sshd", "-D"]
+
+docker run -d -p 8900:8900 -v "$home_directory":/home --name my_ssh_container my_ssh_container
+
+
+
+
